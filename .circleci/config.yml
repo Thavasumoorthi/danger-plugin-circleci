@@ -33,4 +33,7 @@ workflows:
           filters:
             branches:
               only:
-                - master  # Ensure it only runs for PRs targeting the 'master' branch
+                - master  # This ensures the job only runs for the 'master' branch
+            pull_requests:
+              only:
+                - master  # This ensures the job also runs when PR is made to 'master'
