@@ -29,8 +29,8 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build:
-          filters:
-            pull_requests:
-              only:
-                - master  # This ensures it runs for any PR targeting the 'master' branch
+      - build  # This is just the job name (no additional mappings)
+    filters:
+      branches:
+        only:
+          - master  # Ensure it only runs for PRs targeting the 'master' branch
