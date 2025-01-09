@@ -1,7 +1,17 @@
 import circleci from 'danger-plugin-circleci'
 
-import {warn,fail,} from 'danger'
+import { danger, warn, fail, message } from "danger";
 
+
+
+// Rule 1: Ensure PR has a proper title and description
+if (danger.github.pr.title.length < 10) {
+    fail("PR title should be at least 10 characters long.");
+  }
+  
+  if (!danger.github.pr.body || danger.github.pr.body.length < 20) {
+    fail("PR description should provide enough context (at least 20 characters).");
+  }
 
 // Rule 3: Fail if console.log() is used in JS/TS files
 const newOrModifiedFiles = [
