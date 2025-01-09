@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node app.js",
-    "test": "echo \"No tests yet\" && exit 0" 
-
-
+    "start": "node app.js",
+    "test": "echo \"No tests yet\" && exit 0"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +13,7 @@
     "danger-plugin-circleci": "^0.0.6"
   },
   "dependencies": {
+    "danger": "^12.3.3",
     "express": "^4.21.2"
   }
 }
