@@ -31,6 +31,6 @@ workflows:
     jobs:
       - build:
           filters:
-            branches:
+            pull_requests:
               only:
-                - master
+                - master  # Ensure this is only run on PRs to master
