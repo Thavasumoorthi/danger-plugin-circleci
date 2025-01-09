@@ -29,11 +29,11 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - master  # This ensures the job only runs for the 'master' branch
-            pull_requests:
-              only:
-                - master  # This ensures the job also runs when PR is made to 'master'
+      - build  # Just reference the job name here
+    filters:
+      branches:
+        only:
+          - master  # This ensures it only runs for the 'master' branch
+      pull_requests:
+        only:
+          - master  # This ensures the job also runs when PR is made to 'master'
