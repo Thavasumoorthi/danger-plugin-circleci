@@ -10,30 +10,27 @@ jobs:
   build:
     executor: node-executor
     steps:
-      - checkout  # Checkout the code from the repo
+      - checkout
       - run:
           name: Install dependencies
-          command: npm install  # Install dependencies
+          command: npm install
       - run:
           name: Run tests
-          command: npm test  # Run the tests
+          command: npm test
       - run:
           name: Run Danger CI
-          command: npx danger ci  # Run Danger CI to check PR status
+          command: npx danger ci
       - run:
           name: Start Express server
           command: |
-            nohup npm start &  # Start the server in the background (non-blocking)
+            nohup npm start &
 
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - build  # Just reference the job name here
-    filters:
-      branches:
-        only:
-          - master  # This ensures it only runs for the 'master' branch
-      pull_requests:
-        only:
-          - master  # This ensures the job also runs when PR is made to 'master'
+      - build:
+          filters:
+            branches:
+              only:
+                - master
