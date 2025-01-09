@@ -1,3 +1,3 @@
 console.log("Thavasumoorthi")
-
-console.log('Thavasu')
+console.log('Thavas')
+console.log('Thavas')

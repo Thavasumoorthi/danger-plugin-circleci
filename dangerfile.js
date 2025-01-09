@@ -2,7 +2,7 @@ import circleci from 'danger-plugin-circleci'
 
 import { danger, warn, fail, message } from "danger";
 
-
+//rule
 
 // Rule 1: Ensure PR has a proper title and description
 if (danger.github.pr.title.length < 10) {
