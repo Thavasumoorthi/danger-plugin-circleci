@@ -3,14 +3,14 @@ version: 2.1
 executors:
   node-executor:
     docker:
-      - image: circleci/node:14  # Using Node.js 14 as the base Docker image
-    working_directory: ~/repo  # Directory inside the container
+      - image: circleci/node:14
+    working_directory: ~/repo
 
 jobs:
   build:
     executor: node-executor
     steps:
-      - checkout  # Checkout the code from the repository
+      - checkout  # Checkout the code from the repo
       - run:
           name: Install dependencies
           command: npm install  # Install dependencies
@@ -31,6 +31,6 @@ workflows:
     jobs:
       - build:
           filters:
-            pull_requests:
+            branches:
               only:
-                - master  # Only run this job for pull requests targeting the 'master' branch
+                - master  # This ensures it only runs for PRs targeting the 'master' branch
