@@ -1,0 +1,36 @@
+version: 2.1
+
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:14
+    working_directory: ~/repo
+
+jobs:
+  build:
+    executor: node-executor
+    steps:
+      - checkout  # Checkout the code from the repo
+      - run:
+          name: Install dependencies
+          command: npm install  # Install dependencies
+      - run:
+          name: Run tests
+          command: npm test  # Run the tests
+      - run:
+          name: Run Danger CI
+          command: npx danger ci  # Run Danger CI to check PR status
+      - run:
+          name: Start Express server
+          command: |
+            nohup npm start &  # Start the server in the background (non-blocking)
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build:
+          filters:
+            pull_requests:
+              only:
+                - master  # This ensures it runs for any PR targeting the 'master' branch
